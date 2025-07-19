@@ -19,9 +19,7 @@ class MoviesApiService {
       List json = await jsonDecode(response.body);
 
       // récupérer une liste d'objet Movie
-      List<Movie> results = json.map((data) {
-        return Movie.fromJSON(data);
-      }).toList();
+      List<Movie> results = json.map((data) => Movie.fromJson(data)).toList();
 
       return results;
     }

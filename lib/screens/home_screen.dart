@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ghibli/widgets/home/movies_list_widget.dart';
 import 'package:ghibli/widgets/shared/appbar_widget.dart';
 
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 

@@ -1,33 +1,47 @@
 import 'dart:developer';
-
+import 'package:flutter/material.dart';
+import 'package:ghibli/models/movie.dart';
 import 'package:ghibli/screens/home_screen.dart';
-import 'package:ghibli/screens/movie_screen.dart';
+import 'package:ghibli/screens/movie_detail_screen.dart';
+import 'package:ghibli/services/movies_api_service.dart';
 import 'package:go_router/go_router.dart';
 
 class RouterService {
-  // lister les routes de l'application
   GoRouter getRouter() {
     return GoRouter(
       routes: [
-        /*
-        path : schéma web de la route
-        nom : nom de la route
-        builder permet de cibler l'écran lié à la route
-      */
-        // écran d'accueil
         GoRoute(
           path: '/',
           name: 'home',
           builder: (context, state) => HomeScreen(),
         ),
-
-        // écran d'un film
         GoRoute(
           path: '/movie/:id',
-          name: 'movie',
           builder: (context, state) {
-            inspect(state);
-            return MovieScreen(id: state.pathParameters['id']);
+            final movieId = state.pathParameters['id'];
+
+            return FutureBuilder(
+              future: MoviesApiService().getMovies(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+                  try {
+                    final movie = (snapshot.data! as List<Movie>).firstWhere((m) => m.id == movieId);
+                    return MovieDetailScreen(movie: movie);
+                  } catch (e) {
+                    return Scaffold(
+                      appBar: AppBar(title: const Text('Erreur')),
+                      body: Center(child: Text('Film introuvable : $movieId')),
+                    );
+                  }
+                } else {
+                  return const Scaffold(
+                    body: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
+              },
+            );
           },
         ),
       ],

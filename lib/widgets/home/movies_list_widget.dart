@@ -47,24 +47,17 @@ class MoviesListWidget extends StatelessWidget {
                   /*
 						? : exécuter la partie de droite si la partie de gauche n'est pas nulle
 						! : indiquer que la valeur n'est pas nulle
-					*/
-                  return ListTile(
-                    leading: Image.network(
-                      movies[index].movie_banner!,
-                      width: 80,
-                    ),
-                    title: Text(movies[index].title!),
-                    subtitle: Text(movies[index].original_title!),
-                    trailing: Icon(Icons.chevron_right),
+					*/return ListTile(
+                leading: Image.network(
+                  movies[index].movieBanner,
+                  width: 80,
+                ),
+                title: Text(movies[index].title),
+                subtitle: Text(movies[index].originalTitle),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => context.push('/movie/${movies[index].id}'),
+              );
 
-                    // événement onTap : appui
-                    /*
-                      utiliser le contexte pour naviguer
-                        push : ajouter un écran au-dessus de l'écran affiché, en se basant sur le schéma de la route
-                        pushNamed : ajouter un écran au-dessus de l'écran affiché, en se basant sur la nom de la route
-                    */
-                    onTap: () => context.push('/movie/${movies[index].id}'),
-                  );
                 },
               );
             }

@@ -1,54 +1,43 @@
 class Movie {
-  // propriétés
-  // dart n'affecte pas une valeur nulle par défaut aux propriétés sans valeur
-  // ? équivaut au type null
-  String? id,
-      title,
-      original_title,
-      original_title_romanised,
-      image,
-      movie_banner,
-      description,
-      director,
-      producer,
-      release_date,
-      running_time,
-      rt_score;
+  final String id;
+  final String title;
+  final String originalTitle;
+  final String originalTitleRomanised;
+  final String description;
+  final String director;
+  final String producer;
+  final String releaseDate;
+  final String runningTime;
+  final String rtScore;
+  final String movieBanner;
 
-  // constructeur
-  // les accolades permettent de créer des paramètres nommés
-  // required permet de définir que le paramètre est obligatoire
   Movie({
     required this.id,
     required this.title,
-    required this.original_title,
-    required this.original_title_romanised,
-    required this.image,
-    required this.movie_banner,
+    required this.originalTitle,
+    required this.originalTitleRomanised,
     required this.description,
     required this.director,
     required this.producer,
-    required this.release_date,
-    required this.running_time,
-    required this.rt_score,
+    required this.releaseDate,
+    required this.runningTime,
+    required this.rtScore,
+    required this.movieBanner,
   });
 
-  // méthode factory : méthode qui renvoie un objet à partir de données brutes
-  // ATTENTION avec un Map, utiliser des crochets pour accéder aux valeurs
-  factory Movie.fromJSON(Map<String, dynamic> data) {
+  factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
-      id: data['id'],
-      title: data['title'],
-      original_title: data['original_title'],
-      original_title_romanised: data['original_title_romanised'],
-      image: data['image'],
-      movie_banner: data['movie_banner'],
-      description: data['description'],
-      director: data['director'],
-      producer: data['producer'],
-      release_date: data['release_date'],
-      running_time: data['running_time'],
-      rt_score: data['rt_score'],
+      id: json['id'],
+      title: json['title'],
+      originalTitle: json['original_title'],
+      originalTitleRomanised: json['original_title_romanised'],
+      description: json['description'],
+      director: json['director'],
+      producer: json['producer'],
+      releaseDate: json['release_date'],
+      runningTime: json['running_time'],
+      rtScore: json['rt_score'],
+      movieBanner: json['movie_banner'],
     );
   }
 }
