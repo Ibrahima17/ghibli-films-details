@@ -1,16 +1,47 @@
-# ghibli
+# 🎬 Ghibli Films Details App (Flutter)
 
-A new Flutter project.
+Ce projet Flutter permet d’afficher les films du studio Ghibli, avec une page de détails complète pour chaque film.  
+Il a été réalisé dans le cadre d’un TP encadré.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📱 Fonctionnalités
 
-A few resources to get you started if this is your first Flutter project:
+✅ Récupération des films via l'API publique Studio Ghibli  
+✅ Affichage sous forme de liste avec bannière et titre  
+✅ Navigation dynamique grâce à `go_router`  
+✅ Affichage détaillé d’un film (titre, réalisateur, producteur, durée, description…)  
+✅ Affichage de la note du film sous forme d’étoiles grâce au package `flutter_rating_bar`  
+✅ UI simple et responsive avec une structure en deux colonnes
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🔧 Technologies utilisées
+
+- **Flutter** 3.x
+- **Dart**
+- `go_router`
+- `flutter_rating_bar`
+- Architecture widgetisée (séparation des responsabilités)
+
+---
+
+## 🖼️ Exemple visuel
+
+| Liste des films | Détail d’un film |
+|-----------------|------------------|
+| ![Liste](assets/images/liste.png) | ![Détail](assets/images/detail.png) |
+
+*(Ajoute des captures d’écran si tu veux)*
+
+---
+
+## 📁 Structure du projet
+
+```bash
+lib/
+├── models/               # Classe Movie
+├── services/             # Appels API + routing
+├── screens/              # HomeScreen + MovieDetailScreen
+├── widgets/              # MovieListWidget etc.
+└── main.dart             # Entrée de l'application
